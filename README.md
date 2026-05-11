@@ -1,4 +1,4 @@
-\# Water Tank Control with STM32
+# Water Tank Control with STM32
 
 
 
@@ -6,15 +6,15 @@ Embedded control project for regulating the water level in a two-tank hydraulic 
 
 
 
-The firmware runs on an \*\*STM32 NUCLEO-F411RE\*\* board and acquires water-level measurements from two \*\*VL53L0X Time-of-Flight sensors\*\*. The measured levels are filtered and used by digital controllers implemented on the microcontroller. The control output drives a 12 V DC pump through an \*\*HW-095 / L298N motor driver\*\* using a PWM signal.
+The firmware runs on an **STM32 NUCLEO-F411RE** board and acquires water-level measurements from two **VL53L0X Time-of-Flight sensors**. The measured levels are filtered and used by digital controllers implemented on the microcontroller. The control output drives a 12 V DC pump through an **HW-095 / L298N motor driver** using a PWM signal.
 
 
 
-\---
+---
 
 
 
-\## Project Overview
+## Project Overview
 
 
 
@@ -26,17 +26,17 @@ The project includes:
 
 
 
-\- construction of the physical two-tank hydraulic system;
+- construction of the physical two-tank hydraulic system;
 
-\- water-level measurement using VL53L0X laser-ranging sensors;
+- water-level measurement using VL53L0X laser-ranging sensors;
 
-\- mathematical modelling and linearization of the plant;
+- mathematical modelling and linearization of the plant;
 
-\- design and implementation of PID and LQI controllers;
+- design and implementation of PID and LQI controllers;
 
-\- PWM-based actuation of a DC water pump;
+- PWM-based actuation of a DC water pump;
 
-\- experimental validation on the real plant.
+- experimental validation on the real plant.
 
 
 
@@ -44,11 +44,11 @@ The controlled variable is the water level in the second tank. The STM32 periodi
 
 
 
-\---
+---
 
 
 
-\## Hardware
+## Hardware
 
 
 
@@ -72,11 +72,11 @@ The controlled variable is the water level in the second tank. The STM32 periodi
 
 
 
-\---
+---
 
 
 
-\## Software and Tools
+## Software and Tools
 
 
 
@@ -84,15 +84,15 @@ The project was developed using:
 
 
 
-\- \*\*STM32CubeIDE\*\*
+- **STM32CubeIDE**
 
-\- \*\*STM32CubeMX\*\*
+- **STM32CubeMX**
 
-\- \*\*STM32 HAL library\*\*
+- **STM32 HAL library**
 
-\- \*\*ARM GCC toolchain\*\*
+- **ARM GCC toolchain**
 
-\- \*\*VL53L0X API driver\*\*
+- **VL53L0X API driver**
 
 
 
@@ -102,7 +102,7 @@ The STM32CubeMX configuration is stored in:
 
 ```text
 
-Code\_Project\_v\_1.ioc
+Code_Project_v_1.ioc
 
 ```
 
@@ -112,11 +112,11 @@ This file contains the configuration of pins, clocks, timers, I2C, USART and per
 
 
 
-\---
+---
 
 
 
-\## Repository Structure
+## Repository Structure
 
 
 
@@ -142,9 +142,9 @@ This file contains the configuration of pins, clocks, timers, I2C, USART and per
 
 │   │   ├── sensors.h
 
-│   │   ├── stm32f4xx\_hal\_conf.h
+│   │   ├── stm32f4xx_hal_conf.h
 
-│   │   ├── stm32f4xx\_it.h
+│   │   ├── stm32f4xx_it.h
 
 │   │   ├── tim.h
 
@@ -168,15 +168,15 @@ This file contains the configuration of pins, clocks, timers, I2C, USART and per
 
 │   │   ├── sensors.c
 
-│   │   ├── stm32f4xx\_hal\_msp.c
+│   │   ├── stm32f4xx_hal_msp.c
 
-│   │   ├── stm32f4xx\_it.c
+│   │   ├── stm32f4xx_it.c
 
 │   │   ├── syscalls.c
 
 │   │   ├── sysmem.c
 
-│   │   ├── system\_stm32f4xx.c
+│   │   ├── system_stm32f4xx.c
 
 │   │   ├── tim.c
 
@@ -186,7 +186,7 @@ This file contains the configuration of pins, clocks, timers, I2C, USART and per
 
 │   └── Startup/
 
-│       └── startup\_stm32f411retx.s
+│       └── startup_stm32f411retx.s
 
 │
 
@@ -194,7 +194,7 @@ This file contains the configuration of pins, clocks, timers, I2C, USART and per
 
 │   ├── CMSIS/
 
-│   ├── STM32F4xx\_HAL\_Driver/
+│   ├── STM32F4xx_HAL_Driver/
 
 │   └── VL53L0X/
 
@@ -206,11 +206,11 @@ This file contains the configuration of pins, clocks, timers, I2C, USART and per
 
 ├── .project
 
-├── Code\_Project\_v\_1.ioc
+├── Code_Project_v_1.ioc
 
-├── STM32F411RETX\_FLASH.ld
+├── STM32F411RETX_FLASH.ld
 
-├── STM32F411RETX\_RAM.ld
+├── STM32F411RETX_RAM.ld
 
 └── README.md
 
@@ -218,15 +218,15 @@ This file contains the configuration of pins, clocks, timers, I2C, USART and per
 
 
 
-\---
+---
 
 
 
-\## Firmware Modules
+## Firmware Modules
 
 
 
-\### `main.c`
+### `main.c`
 
 
 
@@ -236,7 +236,7 @@ The main loop reads sensor data, maps the measured distances into water levels a
 
 
 
-\### `sensors.c` / `sensors.h`
+### `sensors.c` / `sensors.h`
 
 
 
@@ -248,19 +248,19 @@ Main responsibilities:
 
 
 
-\- initialization of multiple VL53L0X sensors on the same I2C bus;
+- initialization of multiple VL53L0X sensors on the same I2C bus;
 
-\- XSHUT-based sensor boot sequence;
+- XSHUT-based sensor boot sequence;
 
-\- assignment of different I2C addresses;
+- assignment of different I2C addresses;
 
-\- acquisition of distance measurements;
+- acquisition of distance measurements;
 
-\- conversion from measured distance to tank water level.
+- conversion from measured distance to tank water level.
 
 
 
-\### `Motor.c` / `Motor.h`
+### `Motor.c` / `Motor.h`
 
 
 
@@ -272,17 +272,17 @@ Main responsibilities:
 
 
 
-\- initialization of the pump structure;
+- initialization of the pump structure;
 
-\- conversion from controller output to PWM duty cycle;
+- conversion from controller output to PWM duty cycle;
 
-\- duty-cycle saturation;
+- duty-cycle saturation;
 
-\- update of the timer compare register used for PWM generation.
+- update of the timer compare register used for PWM generation.
 
 
 
-\### `control.c` / `control.h`
+### `control.c` / `control.h`
 
 
 
@@ -294,9 +294,9 @@ Implemented controllers:
 
 
 
-\- PID controller;
+- PID controller;
 
-\- LQI controller.
+- LQI controller.
 
 
 
@@ -304,7 +304,7 @@ The controller output is the duty cycle applied to the pump.
 
 
 
-\### `MovingAverageFilter.c` / `MovingAverageFilter.h`
+### `MovingAverageFilter.c` / `MovingAverageFilter.h`
 
 
 
@@ -312,11 +312,11 @@ Moving average filter used to reduce noise and fluctuations in the measured wate
 
 
 
-\---
+---
 
 
 
-\## Control Architecture
+## Control Architecture
 
 
 
@@ -328,29 +328,29 @@ At each sampling instant, the firmware performs the following operations:
 
 
 
-1\. read the distance from both VL53L0X sensors;
+1. read the distance from both VL53L0X sensors;
 
-2\. convert the measured distances into water levels;
+2. convert the measured distances into water levels;
 
-3\. filter the measured levels using a moving average filter;
+3. filter the measured levels using a moving average filter;
 
-4\. compute the control action using the selected controller;
+4. compute the control action using the selected controller;
 
-5\. saturate the control output between 0% and 100%;
+5. saturate the control output between 0% and 100%;
 
-6\. update the PWM duty cycle applied to the pump driver.
-
-
-
-The controlled output is the water level of \*\*Tank 2\*\*.
+6. update the PWM duty cycle applied to the pump driver.
 
 
 
-\---
+The controlled output is the water level of **Tank 2**.
 
 
 
-\## Peripherals Configuration
+---
+
+
+
+## Peripherals Configuration
 
 
 
@@ -370,11 +370,11 @@ The controlled output is the water level of \*\*Tank 2\*\*.
 
 
 
-\---
+---
 
 
 
-\## VL53L0X Sensor Management
+## VL53L0X Sensor Management
 
 
 
@@ -400,15 +400,15 @@ The sensors are configured in high-accuracy mode to improve the precision of the
 
 
 
-\---
+---
 
 
 
-\## Pump Actuation
+## Pump Actuation
 
 
 
-The pump is driven through an \*\*HW-095 / L298N\*\* driver.
+The pump is driven through an **HW-095 / L298N** driver.
 
 
 
@@ -416,13 +416,13 @@ The STM32 controls the pump using:
 
 
 
-\- one PWM signal for speed control;
+- one PWM signal for speed control;
 
-\- two GPIO output pins for driver input control.
+- two GPIO output pins for driver input control.
 
 
 
-The PWM signal is generated using \*\*TIM2\*\*.
+The PWM signal is generated using **TIM2**.
 
 
 
@@ -446,11 +446,11 @@ The controller output is converted into a duty cycle and written to the timer co
 
 
 
-\---
+---
 
 
 
-\## Controllers
+## Controllers
 
 
 
@@ -458,7 +458,7 @@ Two control strategies are implemented in the firmware.
 
 
 
-\### PID Controller
+### PID Controller
 
 
 
@@ -486,7 +486,7 @@ The controller output is saturated between 0% and 100%.
 
 
 
-\### LQI Controller
+### LQI Controller
 
 
 
@@ -514,11 +514,11 @@ The controller selection can be changed in the timer callback function inside `m
 
 
 
-\---
+---
 
 
 
-\## Sampling Time
+## Sampling Time
 
 
 
@@ -538,11 +538,11 @@ This value was chosen considering the slow dynamics of the hydraulic system and 
 
 
 
-\---
+---
 
 
 
-\## Plant Model
+## Plant Model
 
 
 
@@ -572,11 +572,11 @@ A linearized model was obtained around an equilibrium point and used for control
 
 
 
-\---
+---
 
 
 
-\## Experimental Results
+## Experimental Results
 
 
 
@@ -596,15 +596,15 @@ The identified PID controller showed a settling time close to the simulated resp
 
 
 
-\---
+---
 
 
 
-\## Build Instructions
+## Build Instructions
 
 
 
-\### Requirements
+### Requirements
 
 
 
@@ -612,27 +612,27 @@ To build and flash the project, the following tools are required:
 
 
 
-\- STM32CubeIDE
+- STM32CubeIDE
 
-\- STM32 NUCLEO-F411RE board
+- STM32 NUCLEO-F411RE board
 
-\- ST-LINK debugger
+- ST-LINK debugger
 
-\- USB cable
+- USB cable
 
-\- ARM GCC toolchain, included with STM32CubeIDE
-
-
-
-\---
+- ARM GCC toolchain, included with STM32CubeIDE
 
 
 
-\### Open the Project in STM32CubeIDE
+---
 
 
 
-1\. Clone the repository:
+### Open the Project in STM32CubeIDE
+
+
+
+1. Clone the repository:
 
 
 
@@ -644,11 +644,11 @@ git clone https://github.com/<username>/<repository-name>.git
 
 
 
-2\. Open STM32CubeIDE.
+2. Open STM32CubeIDE.
 
 
 
-3\. Select:
+3. Select:
 
 
 
@@ -660,23 +660,23 @@ File > Import > Existing Projects into Workspace
 
 
 
-4\. Select the cloned repository folder.
+4. Select the cloned repository folder.
 
 
 
-5\. Import the project.
+5. Import the project.
 
 
 
-6\. Build the project using the `Debug` configuration.
+6. Build the project using the `Debug` configuration.
 
 
 
-\---
+---
 
 
 
-\## Flashing the Firmware
+## Flashing the Firmware
 
 
 
@@ -712,11 +712,11 @@ The firmware can also be flashed using STM32CubeProgrammer if a `.elf`, `.hex` o
 
 
 
-\---
+---
 
 
 
-\## Version Control Notes
+## Version Control Notes
 
 
 
@@ -734,21 +734,21 @@ Debug/
 
 Release/
 
-\*.elf
+*.elf
 
-\*.o
+*.o
 
-\*.d
+*.d
 
-\*.su
+*.su
 
-\*.map
+*.map
 
-\*.list
+*.list
 
-\*.bin
+*.bin
 
-\*.hex
+*.hex
 
 .metadata/
 
@@ -760,17 +760,17 @@ The `Debug/` folder is generated automatically by STM32CubeIDE during compilatio
 
 
 
-\---
+---
 
 
 
-\## Suggested `.gitignore`
+## Suggested `.gitignore`
 
 
 
 ```gitignore
 
-\# Build folders
+# Build folders
 
 Debug/
 
@@ -778,45 +778,45 @@ Release/
 
 build/
 
-cmake-build-\*/
+cmake-build-*/
 
 out/
 
 
 
-\# Compiled objects
+# Compiled objects
 
-\*.o
+*.o
 
-\*.obj
+*.obj
 
-\*.d
+*.d
 
-\*.su
+*.su
 
-\*.lst
+*.lst
 
-\*.list
-
-
-
-\# Firmware outputs
-
-\*.elf
-
-\*.hex
-
-\*.bin
-
-\*.map
-
-\*.siz
+*.list
 
 
 
-\# Generated makefiles inside build folders
+# Firmware outputs
 
-\*\*/subdir.mk
+*.elf
+
+*.hex
+
+*.bin
+
+*.map
+
+*.siz
+
+
+
+# Generated makefiles inside build folders
+
+**/subdir.mk
 
 objects.mk
 
@@ -826,7 +826,7 @@ sources.mk
 
 
 
-\# STM32CubeIDE / Eclipse local files
+# STM32CubeIDE / Eclipse local files
 
 .metadata/
 
@@ -836,13 +836,13 @@ RemoteSystemsTempFiles/
 
 
 
-\# Local launch/debug configuration
+# Local launch/debug configuration
 
-\*.launch
+*.launch
 
 
 
-\# Local IDE preferences
+# Local IDE preferences
 
 .settings/language.settings.xml
 
@@ -850,15 +850,15 @@ RemoteSystemsTempFiles/
 
 
 
-\# OS files
+# OS files
 
-.DS\_Store
+.DS_Store
 
 Thumbs.db
 
 
 
-\# Editor folders
+# Editor folders
 
 .vscode/
 
@@ -866,45 +866,45 @@ Thumbs.db
 
 
 
-\# Temporary files
+# Temporary files
 
-\*.log
+*.log
 
-\*.tmp
+*.tmp
 
-\*.bak
+*.bak
 
-\*.swp
+*.swp
 
-\*\~
+*~
 
 ```
 
 
 
-\---
+---
 
 
 
-\## Authors
+## Authors
 
 
 
-\- Michele Abbaticchio
+- Michele Abbaticchio
 
-\- Antonio Camposeo
+- Antonio Camposeo
 
-\- Fabio Ceglie
+- Fabio Ceglie
 
-\- Christian Fonseca
-
-
-
-\---
+- Christian Fonseca
 
 
 
-\## Academic Context
+---
+
+
+
+## Academic Context
 
 
 
@@ -916,15 +916,15 @@ Professor:
 
 
 
-\- Prof. Luca De Cicco
+- Prof. Luca De Cicco
 
 
 
-\---
+---
 
 
 
-\## License
+## License
 
 
 
