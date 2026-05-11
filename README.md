@@ -23,6 +23,18 @@ The controlled variable is the water level in the second tank. The STM32 periodi
 
 ---
 
+## Documentation
+
+The full technical report of the project is available in:
+
+```text
+docs/Report_Project.pdf
+```
+
+The report includes the hardware design, sensor configuration, mathematical modelling, controller design, firmware implementation, experimental results and final considerations.
+
+---
+
 ## Hardware
 
 | Component | Description |
@@ -99,7 +111,11 @@ This file contains the configuration of pins, clocks, timers, I2C, USART and per
 │   ├── STM32F4xx_HAL_Driver/
 │   └── VL53L0X/
 │
+├── docs/
+│   └── Report_Project.pdf
+│
 ├── .cproject
+├── .gitignore
 ├── .mxproject
 ├── .project
 ├── Code_Project_v_1.ioc
@@ -358,7 +374,9 @@ The firmware can also be flashed using STM32CubeProgrammer if a `.elf`, `.hex` o
 
 ## Version Control Notes
 
-The repository should contain only source files, configuration files and required drivers.
+The repository should contain only source files, configuration files, documentation and required drivers.
+
+Build artifacts and temporary files are excluded from version control through the `.gitignore` file.
 
 The following files and folders should not be committed:
 
@@ -377,67 +395,6 @@ Release/
 ```
 
 The `Debug/` folder is generated automatically by STM32CubeIDE during compilation and is intentionally excluded from version control.
-
----
-
-## Suggested `.gitignore`
-
-```gitignore
-# Build folders
-Debug/
-Release/
-build/
-cmake-build-*/
-out/
-
-# Compiled objects
-*.o
-*.obj
-*.d
-*.su
-*.lst
-*.list
-
-# Firmware outputs
-*.elf
-*.hex
-*.bin
-*.map
-*.siz
-
-# Generated makefiles inside build folders
-**/subdir.mk
-objects.mk
-objects.list
-sources.mk
-
-# STM32CubeIDE / Eclipse local files
-.metadata/
-.recommenders/
-RemoteSystemsTempFiles/
-
-# Local launch/debug configuration
-*.launch
-
-# Local IDE preferences
-.settings/language.settings.xml
-.settings/com.st.stm32cube.ide.mcu.sfrview.prefs
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Editor folders
-.vscode/
-.idea/
-
-# Temporary files
-*.log
-*.tmp
-*.bak
-*.swp
-*~
-```
 
 ---
 
