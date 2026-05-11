@@ -1,3 +1,0 @@
-../Core/Src/sensors.c:22:6:Sensor_Init	16	static
-../Core/Src/sensors.c:47:6:Sensor_Config	16	static
-../Core/Src/sensors.c:83:6:Get_Data_Sensors	8	static

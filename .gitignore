@@ -1,0 +1,54 @@
+# Build folders
+Debug/
+Release/
+build/
+cmake-build-*/
+out/
+
+# Compiled objects
+*.o
+*.obj
+*.d
+*.su
+*.lst
+*.list
+
+# Firmware outputs
+*.elf
+*.hex
+*.bin
+*.map
+*.siz
+
+# Generated makefiles inside build folders
+**/subdir.mk
+objects.mk
+objects.list
+sources.mk
+
+# STM32CubeIDE / Eclipse local files
+.metadata/
+.recommenders/
+RemoteSystemsTempFiles/
+
+# Local launch/debug configuration
+*.launch
+
+# Local IDE preferences
+.settings/language.settings.xml
+.settings/com.st.stm32cube.ide.mcu.sfrview.prefs
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+
+# Temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*~

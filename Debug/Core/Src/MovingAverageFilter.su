@@ -1,2 +1,0 @@
-../Core/Src/MovingAverageFilter.c:35:6:MovingAverageFilter_Init	24	static
-../Core/Src/MovingAverageFilter.c:67:7:MovingAverageFilter_Update	24	static

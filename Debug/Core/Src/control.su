@@ -1,9 +1,0 @@
-../Core/Src/control.c:10:6:PID_Init	16	static
-../Core/Src/control.c:25:6:Pump_Init	16	static
-../Core/Src/control.c:29:6:Tank1_Init	16	static
-../Core/Src/control.c:36:6:Tank2_Init	16	static
-../Core/Src/control.c:43:6:LQI_Init	16	static
-../Core/Src/control.c:56:7:PID_Control	24	static
-../Core/Src/control.c:106:7:LQI_Control	32	static
-../Core/Src/control.c:131:6:actuation_pump	16	static
-../Core/Src/control.c:142:6:MapLevel	24	static
