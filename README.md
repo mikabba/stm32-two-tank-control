@@ -317,7 +317,7 @@ To build and flash the project, the following tools are required:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/<username>/<repository-name>.git
+git clone https://github.com/mikabba/stm32-two-tank-control.git
 ```
 
 2. Open STM32CubeIDE.
