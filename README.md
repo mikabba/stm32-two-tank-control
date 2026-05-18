@@ -17,6 +17,16 @@ The control stack runs on an **STM32 NUCLEO-F411RE** board. Two **VL53L0X Time-o
 <p align="center">
   <img src="assets/real_plant.png" alt="Two-tank hydraulic plant controlled by STM32" width="520"/>
 </p>
+The numbered elements in the prototype are:
+
+| Label | Component | Role in the system |
+|---:|---|---|
+| 1 | STM32 NUCLEO-F411RE | Main embedded controller. It reads the level sensors, executes the control algorithm and generates the PWM signal for the pump. |
+| 2 | HW-095 / L298N motor driver | Power interface between the STM32 and the 12 V DC pump. It converts the PWM control signal into the actuation voltage applied to the pump. |
+| 3 | Breadboards and wiring | Electrical interconnection stage for sensors, driver, power supply and STM32 peripherals. |
+| 4 | Tank 2 with VL53L0X sensor | Controlled tank. Its water level is the main output variable regulated by the PID or LQI controller. |
+| 5 | Tank 1 with VL53L0X sensor | Intermediate tank. Its level is measured and used as part of the two-tank state representation. |
+| 6 | Basin | Water reservoir used to collect the outlet flow and provide the pump inlet supply. |
 
 The controlled variable is the water level in **Tank 2**. The project covers the full engineering workflow: physical plant construction, sensor validation, actuator characterization, nonlinear modelling, linearization, controller design, firmware implementation, real-plant validation and system identification.
 
